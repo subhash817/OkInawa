@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/okinawa"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/okinawa"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.OkInawa"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activity.ScanDeliveryNote_Activity"
+            android:screenOrientation="fullSensor" />
+
+        <activity
+            android:name=".activity.StartScanning_Activity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".activity.DashBoard_Activity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".activity.ScanPickList_Activity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".activity.CheckStockInfo_Activity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".activity.ScanVinInfo_Activity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".activity.ProAllocationSFG_Activity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".activity.ScanVehicleInfo_Activity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".activity.ProAllocationFGActivity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true"
+            android:screenOrientation="fullSensor">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

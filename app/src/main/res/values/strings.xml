@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">OkInawa</string>
+    <string name="pro_allocation_fg">Pro Allocation FG</string>
+    <string name="production_order">Production Order</string>
+    <string name="status">Status</string>
+    <string name="input_selection">Input/Selection</string>
+    <string name="sale_order_no">Sale Order No</string>
+    <string name="sales_order_date">Sales Order Date</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="sales_order_doc_entry">Sales Order Doc Entry</string>
+    <string name="customer_ref_no">Customer Ref No</string>
+    <string name="clear">CLEAR</string>
+</resources>
