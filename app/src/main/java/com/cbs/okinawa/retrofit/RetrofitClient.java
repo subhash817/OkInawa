@@ -11,10 +11,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-
+    private static String URL_BASE = "http://192.168.1.15:82";
 
 
     public static ApiInterface getClient() {
+
 
         return retrofitBuilder().create(ApiInterface.class);
     }
@@ -41,9 +42,11 @@ public class RetrofitClient {
     }
 
     private static Retrofit retrofitBuilder() {
+
+
         return new Retrofit.Builder()
                 .client(okHttp())
-                .baseUrl("http://192.168.1.15:82/")
+                .baseUrl(URL_BASE+"/")
                 .addConverterFactory(GsonConverterFactory.create(gson()))
                 .build();
 

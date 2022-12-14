@@ -1,5 +1,7 @@
 package com.cbs.okinawa.model;
 
+
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -14,6 +16,7 @@ private String proOrder;
 @SerializedName("Docentry")
 @Expose
 private String docentry;
+
 @SerializedName("Date")
 @Expose
 private String date;
