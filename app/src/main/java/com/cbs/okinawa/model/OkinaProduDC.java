@@ -15,7 +15,7 @@ private String itemCode;
 private String description;
 @SerializedName("Quantity")
 @Expose
-private Double quantity;
+private String quantity;
 @SerializedName("IssueRef")
 @Expose
 private String issueRef;
@@ -39,11 +39,11 @@ public void setDescription(String description) {
 this.description = description;
 }
 
-public Double getQuantity() {
+public String getQuantity() {
 return quantity;
 }
 
-public void setQuantity(Double quantity) {
+public void setQuantity(String quantity) {
 this.quantity = quantity;
 }
 

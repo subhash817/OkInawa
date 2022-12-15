@@ -9,13 +9,13 @@ public class ItemCode {
 
 @SerializedName("OnHand")
 @Expose
-private Double onHand;
+private String onHand;
 
-public Double getOnHand() {
+public String getOnHand() {
 return onHand;
 }
 
-public void setOnHand(Double onHand) {
+public void setOnHand(String onHand) {
 this.onHand = onHand;
 }
 

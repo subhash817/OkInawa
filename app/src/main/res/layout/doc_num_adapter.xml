@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/imgSearchdata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_search_24"/>
+<TextView
+    android:id="@+id/tv_status"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Status"/>
+<TextView
+    android:id="@+id/tv_pro_order"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="ProOrder"/>
+<TextView
+    android:id="@+id/tv_doc_enter"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Docentry"/>
+<TextView
+    android:id="@+id/tv_date"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Date"/>
+<ImageView
+    android:id="@+id/ivScrollUp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Date"/>
+
+</LinearLayout>

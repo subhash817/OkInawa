@@ -14,10 +14,15 @@
         tools:context=".activity.StartScanning_Activity">
 
         <include layout="@layout/toolbar" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvJsondata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"

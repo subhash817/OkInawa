@@ -22,7 +22,14 @@
 
         <activity
             android:name=".activity.StartScanning_Activity"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="fullSensor"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activity.DashBoard_Activity"
             android:screenOrientation="fullSensor" />
@@ -51,11 +58,7 @@
             android:name=".activity.MainActivity"
             android:exported="true"
             android:screenOrientation="fullSensor">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

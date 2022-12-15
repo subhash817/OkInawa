@@ -21,7 +21,10 @@ private String docentry;
 @Expose
 private String date;
 
-public String getStatus() {
+    public OkinaProdu(String proOrder, String status, String docentry) {
+    }
+
+    public String getStatus() {
 return status;
 }
 
