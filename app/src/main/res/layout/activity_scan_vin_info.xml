@@ -40,11 +40,11 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txt_BarCode"
+                        android:id="@+id/tv_ProdOrder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true" />
-
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/green"/>
 
                 </RelativeLayout>
 
@@ -63,10 +63,11 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvQuantity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true" />
-
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/green"/>
 
                 </RelativeLayout>
 

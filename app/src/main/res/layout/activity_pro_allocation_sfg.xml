@@ -41,9 +41,10 @@
                     <Spinner
                         android:id="@+id/spnStatus"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_alignParentRight="true"
-                        android:text="Status" />
+                        android:background="@android:drawable/btn_dropdown"
+                        android:spinnerMode="dropdown" />
 
                 </RelativeLayout>
 
@@ -51,10 +52,10 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_marginTop="10dp">
-
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp">
                     <TextView
+                        android:id="@+id/tvpr"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/production_order"
@@ -62,11 +63,26 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/txt_BarCode"
+                    <AutoCompleteTextView
+                        android:id="@+id/autoTxtViewProOrder"
+                        android:layout_toRightOf="@+id/tvpr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textAlignment="center"
+                        android:textColor="@color/green"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+
+
+                    <ImageView
+                        android:id="@+id/img_searchCode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true" />
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_baseline_search_24" />
+
 
 
                 </RelativeLayout>
@@ -85,9 +101,12 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/txtItemCode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true" />
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/green"
+                        />
 
                 </RelativeLayout>
 
@@ -105,9 +124,11 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/txtFGDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true" />
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/green" />
 
                 </RelativeLayout>
 
@@ -125,10 +146,11 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/txtProductionOrderQTY"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true" />
-
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/green" />
                 </RelativeLayout>
 
                 <RelativeLayout

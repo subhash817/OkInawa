@@ -5,11 +5,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lite_gray"
+        android:background="@color/white"
         android:orientation="vertical"
         tools:context=".activity.ProAllocationFGActivity">
-
-
         <include layout="@layout/toolbar" />
 
         <ScrollView
@@ -19,7 +17,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
 
@@ -39,43 +37,53 @@
                     <Spinner
                         android:id="@+id/spnStatus"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_alignParentRight="true"
                         android:background="@android:drawable/btn_dropdown"
-                        android:padding="10dp"
-                        android:spinnerMode="dropdown"/>
+                        android:spinnerMode="dropdown" />
 
                 </RelativeLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/production_order"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="5dp">
 
-                    <AutoCompleteTextView
-                        android:id="@+id/autoTxtViewProOrder"
+
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textAlignment="center"
-                        android:textStyle="normal" />
-
-                    <ImageView
-                        android:id="@+id/img_searchCode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/ic_baseline_search_24" />
+                        android:layout_marginTop="5dp">
+                        <TextView
+                            android:id="@+id/tvpr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/production_order"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                </RelativeLayout>
+                        <AutoCompleteTextView
+                            android:id="@+id/autoTxtViewProOrder"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_toRightOf="@+id/tvpr"
+                            android:textAlignment="center"
+                            android:textColor="@color/green"
+                            android:textSize="14sp"
+                            android:textStyle="normal" />
+
+
+
+                        <ImageView
+                            android:id="@+id/img_searchCode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/ic_baseline_search_24" />
+
+
+
+                    </RelativeLayout>
+
 
 
 
@@ -84,11 +92,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_marginTop="10dp">
-
-
-
-
-
 
                 </RelativeLayout>
 
@@ -109,14 +112,16 @@
                         android:id="@+id/txtItemCode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true" />
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/green" />
 
                 </RelativeLayout>
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -128,12 +133,12 @@
 
                     <TextView
                         android:id="@+id/txtFGDescription"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:layout_alignParentRight="true" />
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/green" />
 
-                </RelativeLayout>
+                </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -152,7 +157,8 @@
                         android:id="@+id/txtProductionOrderQTY"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true" />
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/green" />
 
                 </RelativeLayout>
 
@@ -255,8 +261,8 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="MODIFY"
                         android:background="@drawable/shapelogin"
+                        android:text="MODIFY"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 

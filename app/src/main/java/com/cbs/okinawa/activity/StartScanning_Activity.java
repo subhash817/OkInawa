@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cbs.okinawa.R;
-import com.cbs.okinawa.adapter.JsonAdapterProducation;
 import com.cbs.okinawa.databinding.ActivityStartScanningBinding;
 import com.cbs.okinawa.model.OkinaProdu;
 import com.cbs.okinawa.retrofit.RetrofitClient;
@@ -67,11 +66,11 @@ public class StartScanning_Activity extends AppCompatActivity {
                             docEntrys.add(okinaProdu.get(i).getDocentry());
                             List<OkinaProdu> okinaProduList=okinaProdu;
 
-                            rcvJsondata = (RecyclerView) findViewById(R.id.rcvJsondata);
-                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-                            rcvJsondata.setLayoutManager(linearLayoutManager);
-                            JsonAdapterProducation billRegisterAdapter = new JsonAdapterProducation(mContext, okinaProduList);
-                            rcvJsondata.setAdapter(billRegisterAdapter);
+//                            rcvJsondata = (RecyclerView) findViewById(R.id.rcvJsondata);
+//                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+//                            rcvJsondata.setLayoutManager(linearLayoutManager);
+//                            JsonAdapterProducation billRegisterAdapter = new JsonAdapterProducation(mContext, okinaProduList);
+//                            rcvJsondata.setAdapter(billRegisterAdapter);
                         }
 
 

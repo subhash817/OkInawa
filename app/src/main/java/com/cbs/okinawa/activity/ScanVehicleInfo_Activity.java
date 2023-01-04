@@ -13,17 +13,22 @@ import androidx.databinding.DataBindingUtil;
 
 import com.cbs.okinawa.R;
 import com.cbs.okinawa.databinding.ActivityScanVehicleInfoBinding;
+import com.cbs.okinawa.utils.CommonMethods;
+import com.cbs.okinawa.utils.PrefrenceKey;
 
 public class ScanVehicleInfo_Activity extends AppCompatActivity {
     ActivityScanVehicleInfoBinding scanVehInfoBinding;
     Context mContext;
+    String proOrder,Quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        scanVehInfoBinding= DataBindingUtil.setContentView(this,R.layout.activity_scan_vehicle_info);
        mContext=ScanVehicleInfo_Activity.this;
-       getInitView();
+        proOrder= CommonMethods.getPrefsData(mContext, PrefrenceKey.ProOrder,"");
+        Quantity= CommonMethods.getPrefsData(mContext, PrefrenceKey.Quantity,"");
+        getInitView();
     }
 
     private void getInitView() {
@@ -31,7 +36,6 @@ public class ScanVehicleInfo_Activity extends AppCompatActivity {
         ImageView setActivitback = findViewById(R.id.back);
         TextView screenName=findViewById(R.id.txtScreenName);
         screenName.setText("Scan Vehicle Info");
-
         setActivitback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,5 +43,9 @@ public class ScanVehicleInfo_Activity extends AppCompatActivity {
 
             }
         });
+        scanVehInfoBinding.tvProdOrder.setText(proOrder);
+        scanVehInfoBinding.tvQuantity.setText(Quantity);
+
+
     }
 }
