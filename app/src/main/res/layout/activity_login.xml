@@ -18,6 +18,7 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/edt_userId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -27,13 +28,14 @@
                 android:background="@drawable/shape_user"
                 android:drawableLeft="@drawable/ic_baseline_account_circle_24"
                 android:drawablePadding="10dp"
-                android:hint="User Code"
+                android:text="OK0009"
                 android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/black"
                 android:textColorHint="@color/black" />
 
             <EditText
+                android:id="@+id/edt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -43,8 +45,7 @@
                 android:background="@drawable/shape_user"
                 android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
                 android:drawablePadding="10dp"
-                android:hint="Password"
-                android:inputType="textPassword"
+                android:text="OK0009"
                 android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/black"

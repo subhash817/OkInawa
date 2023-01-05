@@ -9,7 +9,6 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.SearchView;
@@ -38,7 +37,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProAllocationFGActivity extends AppCompatActivity {
+public class ProAllocationFGActivity extends AppCompatActivity implements OkinaProduAdapter.RecyclerViewClickListener {
     ActivityProAllocationFgactivityBinding proAllocFgBinding;
     Context mContext;
     String preorder, doc, date, docEntry, status, itemCode, description, quantity, issueRef, receiptRef;
@@ -46,6 +45,7 @@ public class ProAllocationFGActivity extends AppCompatActivity {
     ArrayList<String> docEntrys = new ArrayList<>();
     Handler mHandler;
     OkinaProduAdapter okinaProduAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,9 +175,16 @@ public class ProAllocationFGActivity extends AppCompatActivity {
                     List<OkinaProdu> okinaProdus = response.body();
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     custList.setLayoutManager(linearLayoutManager);
-                    okinaProduAdapter=new OkinaProduAdapter(ProAllocationFGActivity.this,okinaProdus);
+                   okinaProduAdapter = new OkinaProduAdapter( mContext,okinaProdus);
+                   custList.setOnClickListener(new View.OnClickListener() {
+                       @Override
+                       public void onClick(View view) {
+                          // Toast.makeText(mContext, okinaProdus.get(0).getDocentry(), Toast.LENGTH_SHORT).show();
+                       }
+                   });
 
                     custList.setAdapter(okinaProduAdapter);
+
                 }
                 searchView.setQueryHint("Search Doc Number");
                 searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -190,6 +197,7 @@ public class ProAllocationFGActivity extends AppCompatActivity {
                     @Override
                     public boolean onQueryTextChange(String s) {
                         okinaProduAdapter.getFilter().filter(s);
+
                         return false;
                     }
                 });
@@ -257,6 +265,12 @@ public class ProAllocationFGActivity extends AppCompatActivity {
         final Dialog custDialog = new Dialog(mContext);
         custDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         //  custDialog.setContentView(R.layout.customer_details);
+
+    }
+
+
+    @Override
+    public void gotoDoc(OkinaProdu okinaProdu) {
 
     }
 }
