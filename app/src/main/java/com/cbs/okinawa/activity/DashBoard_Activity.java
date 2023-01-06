@@ -28,6 +28,13 @@ public class DashBoard_Activity extends AppCompatActivity {
 
     private void initView() {
 
+        dashBoardBinding.llProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(mContext,TestActivity.class);
+                startActivity(intent);
+            }
+        });
         dashBoardBinding.llProAllFG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

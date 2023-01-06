@@ -50,7 +50,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_marginTop="5dp">
+                        android:layout_marginTop="5dp"
+                        android:layout_margin="10dp">
                         <TextView
                             android:id="@+id/tvpr"
                             android:layout_width="wrap_content"
@@ -70,8 +71,6 @@
                             android:textColor="@color/green"
                             android:textSize="14sp"
                             android:textStyle="normal" />
-
-
 
                         <ImageView
                             android:id="@+id/img_searchCode"
@@ -117,15 +116,15 @@
 
                 </RelativeLayout>
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
+                    android:layout_margin="10dp">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:text="FG Description"
                         android:textColor="@color/black"
                         android:textSize="14sp"
@@ -133,12 +132,12 @@
 
                     <TextView
                         android:id="@+id/txtFGDescription"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:textColor="@color/green" />
 
-                </LinearLayout>
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -218,6 +217,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:id="@+id/edtRemark"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"

@@ -40,7 +40,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:textColor="@color/green"/>
+                        android:textColor="@color/green" />
 
 
                 </RelativeLayout>
@@ -64,7 +64,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:textColor="@color/green"/>
+                        android:textColor="@color/green" />
 
 
                 </RelativeLayout>
@@ -106,9 +106,20 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/txtVin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true" />
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imgScanVin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_qr_code_scanner" />
 
                 </RelativeLayout>
 
@@ -126,11 +137,22 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
+                    <TextView
+                        android:id="@+id/txtBattery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+
                     <ImageView
+                        android:id="@+id/imgScanBattery"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/ic_qr_code_scanner"/>
+                        android:src="@drawable/ic_qr_code_scanner" />
 
                 </RelativeLayout>
 
@@ -147,65 +169,82 @@
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtCharger"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
                     <ImageView
+                        android:id="@+id/imgScanCharger"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/ic_qr_code_scanner"/>
+                        android:src="@drawable/ic_qr_code_scanner" />
 
                 </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <Button
-                        android:id="@+id/button_Add"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@drawable/shapelogin"
-                        android:text="ADD"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/button_share"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@drawable/shapelogin"
-                        android:text="MODIFY"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-
-                </RelativeLayout>
-
-
-                <Button
-                    android:id="@+id/button_Next"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcvScanItem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/shapelogin"
-                    android:text="NEXT"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
+                    android:layout_margin="10dp"/>
 
 
             </LinearLayout>
         </ScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom">
+
+            <Button
+                android:id="@+id/btnScanitems"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shapelogin"
+                android:text="ADD"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button_share"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shapelogin"
+                android:text="MODIFY"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnPostItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/button_share"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shapelogin"
+                android:text="SubMit"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
 
     </LinearLayout>
 </layout>

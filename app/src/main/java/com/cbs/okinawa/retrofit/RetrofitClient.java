@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     private static String URL_BASE = "http://192.168.1.16:89/";
-    //private static String URL_BASE_Local = "http://127.0.0.1:91/";
+    private static String URL_BASE_Local = "http://103.75.33.100:92/";
 
 
     public static ApiInterface getClient() {
@@ -20,6 +20,12 @@ public class RetrofitClient {
 
         return retrofitBuilder().create(ApiInterface.class);
     }
+    public static ApiInterface getClient1() {
+
+
+        return retrofitBuilder1().create(ApiInterface.class);
+    }
+
 
 
     public static Gson gson() {
@@ -48,6 +54,16 @@ public class RetrofitClient {
         return new Retrofit.Builder()
                 .client(okHttp())
                 .baseUrl(URL_BASE)
+                .addConverterFactory(GsonConverterFactory.create(gson()))
+                .build();
+
+    }
+    private static Retrofit retrofitBuilder1() {
+
+
+        return new Retrofit.Builder()
+                .client(okHttp())
+                .baseUrl(URL_BASE_Local)
                 .addConverterFactory(GsonConverterFactory.create(gson()))
                 .build();
 

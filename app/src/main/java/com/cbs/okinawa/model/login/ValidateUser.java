@@ -1,99 +1,122 @@
 package com.cbs.okinawa.model.login;
 
 
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class ValidateUser {
 
-@SerializedName("userName")
-@Expose
-private String userName;
-@SerializedName("userId")
-@Expose
-private String userId;
-@SerializedName("password")
-@Expose
-private String password;
-@SerializedName("mobileNo")
-@Expose
-private Object mobileNo;
-@SerializedName("emailID")
-@Expose
-private Object emailID;
-@SerializedName("databaseName")
-@Expose
-private Object databaseName;
-@SerializedName("tran_Mode")
-@Expose
-private Object tranMode;
-@SerializedName("status")
-@Expose
-private Object status;
+    @SerializedName("userName")
+    @Expose
+    private String userName;
+    @SerializedName("userId")
+    @Expose
+    private String userId;
+    @SerializedName("password")
+    @Expose
+    private String password;
+    @SerializedName("mobileNo")
+    @Expose
+    private Object mobileNo;
+    @SerializedName("emailID")
+    @Expose
+    private Object emailID;
+    @SerializedName("databaseName")
+    @Expose
+    private Object databaseName;
+    @SerializedName("tran_Mode")
+    @Expose
+    private Object tranMode;
+    @SerializedName("status")
+    @Expose
+    private Object status;
 
-public String getUserName() {
-return userName;
-}
 
-public void setUserName(String userName) {
-this.userName = userName;
-}
+    @SerializedName("returN_CODE")
+    @Expose
+    private Integer returNCODE;
+    @SerializedName("returN_MESSAGE")
+    @Expose
+    private String returNMESSAGE;
 
-public String getUserId() {
-return userId;
-}
+        public Integer getReturNCODE() {
+                return returNCODE;
+        }
 
-public void setUserId(String userId) {
-this.userId = userId;
-}
+        public void setReturNCODE(Integer returNCODE) {
+                this.returNCODE = returNCODE;
+        }
 
-public String getPassword() {
-return password;
-}
+        public String getReturNMESSAGE() {
+                return returNMESSAGE;
+        }
 
-public void setPassword(String password) {
-this.password = password;
-}
+        public void setReturNMESSAGE(String returNMESSAGE) {
+                this.returNMESSAGE = returNMESSAGE;
+        }
 
-public Object getMobileNo() {
-return mobileNo;
-}
+        public String getUserName() {
+        return userName;
+    }
 
-public void setMobileNo(Object mobileNo) {
-this.mobileNo = mobileNo;
-}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-public Object getEmailID() {
-return emailID;
-}
+    public String getUserId() {
+        return userId;
+    }
 
-public void setEmailID(Object emailID) {
-this.emailID = emailID;
-}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-public Object getDatabaseName() {
-return databaseName;
-}
+    public String getPassword() {
+        return password;
+    }
 
-public void setDatabaseName(Object databaseName) {
-this.databaseName = databaseName;
-}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-public Object getTranMode() {
-return tranMode;
-}
+    public Object getMobileNo() {
+        return mobileNo;
+    }
 
-public void setTranMode(Object tranMode) {
-this.tranMode = tranMode;
-}
+    public void setMobileNo(Object mobileNo) {
+        this.mobileNo = mobileNo;
+    }
 
-public Object getStatus() {
-return status;
-}
+    public Object getEmailID() {
+        return emailID;
+    }
 
-public void setStatus(Object status) {
-this.status = status;
-}
+    public void setEmailID(Object emailID) {
+        this.emailID = emailID;
+    }
+
+    public Object getDatabaseName() {
+        return databaseName;
+    }
+
+    public void setDatabaseName(Object databaseName) {
+        this.databaseName = databaseName;
+    }
+
+    public Object getTranMode() {
+        return tranMode;
+    }
+
+    public void setTranMode(Object tranMode) {
+        this.tranMode = tranMode;
+    }
+
+    public Object getStatus() {
+        return status;
+    }
+
+    public void setStatus(Object status) {
+        this.status = status;
+    }
 
 }

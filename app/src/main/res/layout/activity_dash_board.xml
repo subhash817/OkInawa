@@ -45,6 +45,42 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:id="@+id/llProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/img1s"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_baseline_document_scanner_24" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_toEndOf="@id/img1s"
+                        android:gravity="center"
+                        android:text="Profile"
+                        android:textColor="@color/purple"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/purple"/>
+                <RelativeLayout
                     android:id="@+id/llProAllFG"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
