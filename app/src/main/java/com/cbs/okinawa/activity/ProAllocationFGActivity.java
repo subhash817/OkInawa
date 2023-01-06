@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -21,6 +21,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cbs.okinawa.ItemClickListener;
 import com.cbs.okinawa.R;
 import com.cbs.okinawa.adapter.OkinaProduAdapter;
 import com.cbs.okinawa.databinding.ActivityProAllocationFgactivityBinding;
@@ -37,7 +38,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProAllocationFGActivity extends AppCompatActivity implements OkinaProduAdapter.RecyclerViewClickListener {
+public class ProAllocationFGActivity extends AppCompatActivity {
     ActivityProAllocationFgactivityBinding proAllocFgBinding;
     Context mContext;
     String preorder, doc, date, docEntry, status, itemCode, description, quantity, issueRef, receiptRef;
@@ -45,6 +46,9 @@ public class ProAllocationFGActivity extends AppCompatActivity implements OkinaP
     ArrayList<String> docEntrys = new ArrayList<>();
     Handler mHandler;
     OkinaProduAdapter okinaProduAdapter;
+    ItemClickListener itemClickListener;
+    AutoCompleteTextView autoCompleteTextView;
+
 
 
     @Override
@@ -67,6 +71,7 @@ public class ProAllocationFGActivity extends AppCompatActivity implements OkinaP
         quantity = CommonMethods.getPrefsData(mContext, PrefrenceKey.Quantity, "");
         issueRef = CommonMethods.getPrefsData(mContext, PrefrenceKey.IssueRef, "");
         receiptRef = CommonMethods.getPrefsData(mContext, PrefrenceKey.ReceiptRef, "");
+        autoCompleteTextView=findViewById(R.id.autoTxtViewProOrder);
         getInitView();
 
     }
@@ -175,15 +180,18 @@ public class ProAllocationFGActivity extends AppCompatActivity implements OkinaP
                     List<OkinaProdu> okinaProdus = response.body();
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     custList.setLayoutManager(linearLayoutManager);
-                   okinaProduAdapter = new OkinaProduAdapter( mContext,okinaProdus);
-                   custList.setOnClickListener(new View.OnClickListener() {
-                       @Override
-                       public void onClick(View view) {
-                          // Toast.makeText(mContext, okinaProdus.get(0).getDocentry(), Toast.LENGTH_SHORT).show();
-                       }
-                   });
 
+                    itemClickListener=new ItemClickListener() {
+                        @Override
+                        public void onClick(String value) {
+                           // Toast.makeText(mContext, ""+okinaProdus.get(0).getDocentry(), Toast.LENGTH_SHORT).show();
+                            autoCompleteTextView.setText(okinaProdus.get(0).getDocentry());
+
+                        }
+                    };
+                    okinaProduAdapter = new OkinaProduAdapter(mContext, okinaProdus,itemClickListener);
                     custList.setAdapter(okinaProduAdapter);
+                    custDialog.dismiss();
 
                 }
                 searchView.setQueryHint("Search Doc Number");
@@ -261,16 +269,5 @@ public class ProAllocationFGActivity extends AppCompatActivity implements OkinaP
         builder.show();
     }
 
-    public void showList() {
-        final Dialog custDialog = new Dialog(mContext);
-        custDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //  custDialog.setContentView(R.layout.customer_details);
 
-    }
-
-
-    @Override
-    public void gotoDoc(OkinaProdu okinaProdu) {
-
-    }
 }

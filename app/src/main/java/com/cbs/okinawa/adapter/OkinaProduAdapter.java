@@ -1,8 +1,6 @@
 package com.cbs.okinawa.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,25 +11,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cbs.okinawa.ItemClickListener;
 import com.cbs.okinawa.R;
-import com.cbs.okinawa.activity.ProAllocationFGActivity;
 import com.cbs.okinawa.model.OkinaProdu;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OkinaProduAdapter extends RecyclerView.Adapter<OkinaProduAdapter.myViewHolder> implements Filterable{
+public class OkinaProduAdapter extends RecyclerView.Adapter<OkinaProduAdapter.myViewHolder> implements Filterable {
     private List<OkinaProdu> okinaProdus;
     private List<OkinaProdu> okinaProduFullList;
     Context context;
-    DocRecyler mListner;
+    ItemClickListener itemClickListener;
+    String docNumber;
 
 
-
-    public OkinaProduAdapter(Context context, List<OkinaProdu> okinaProdus) {
+    public OkinaProduAdapter(Context context, List<OkinaProdu> okinaProdus, ItemClickListener itemClickListener) {
         this.okinaProdus = okinaProdus;
         this.context = context;
-        this.mListner=mListner;
+        this.itemClickListener = itemClickListener;
         okinaProduFullList = new ArrayList<>(okinaProdus);
     }
 
@@ -45,7 +43,7 @@ public class OkinaProduAdapter extends RecyclerView.Adapter<OkinaProduAdapter.my
     public OkinaProduAdapter.myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.okina_produ_item, parent, false);
-        return new myViewHolder(view,mListner);
+        return new myViewHolder(view);
     }
 
     @Override
@@ -55,6 +53,12 @@ public class OkinaProduAdapter extends RecyclerView.Adapter<OkinaProduAdapter.my
         holder.tv_ProOrder.setText(okinaProdu.getProOrder());
         holder.tv_Docentry.setText(okinaProdu.getDocentry());
         holder.tv_Date.setText(okinaProdu.getDate());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.tv_Docentry.setText(okinaProdu.getDocentry());
+            }
+        });
 
     }
 
@@ -63,32 +67,16 @@ public class OkinaProduAdapter extends RecyclerView.Adapter<OkinaProduAdapter.my
         return okinaProdus.size();
     }
 
-    public interface RecyclerViewClickListener {
-        void gotoDoc(OkinaProdu okinaProdu);
-    }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
         TextView tv_Status, tv_ProOrder, tv_Docentry, tv_Date;
-        int pos;
-        View rootview;
-        OkinaProdu okinaProdu;
-        DocRecyler mListner;
-        public myViewHolder(@NonNull View itemView,DocRecyler mListner) {
+
+        public myViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.mListner=mListner;
             this.tv_Status = itemView.findViewById(R.id.tv_Status);
             this.tv_ProOrder = itemView.findViewById(R.id.tv_ProOrder);
             this.tv_Docentry = itemView.findViewById(R.id.tv_Docentry);
             this.tv_Date = itemView.findViewById(R.id.tv_Date);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                   // Intent intent=new Intent(rootview.getContext(), ProAllocationFGActivity.class);
-                  //  mListner.gotoDoc(okinaProdus.get(0));
-                   // rootview.getContext().startActivity(intent);
-                   // Log.d("Doc_Entry",okinaProdu.getDocentry());
-                }
-            });
         }
 
     }
@@ -127,7 +115,4 @@ public class OkinaProduAdapter extends RecyclerView.Adapter<OkinaProduAdapter.my
 
         }
     };
-    interface DocRecyler{
-        void gotoDoc(OkinaProdu okinaProdu);
-    }
 }
