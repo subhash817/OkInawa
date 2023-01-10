@@ -49,64 +49,50 @@ public class LoginActivity extends AppCompatActivity {
         loginBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userId = loginBinding.edtUserId.getText().toString();
-                String pass = loginBinding.edtPassword.getText().toString();
-                if (userId.isEmpty()) {
-                    loginBinding.edtUserId.setError("Enter User Id");
-                } else if (pass.isEmpty()) {
-                    loginBinding.edtPassword.setError("Enter User Id");
-                }
-                RetrofitClient.getClient1().login(userId, pass).enqueue(new Callback<List<ValidateUser>>() {
-                    @Override
-                    public void onResponse(Call<List<ValidateUser>> call, Response<List<ValidateUser>> response) {
-                        if (response.code() == 200 && response.body() != null) {
-                            Log.d("Login", response.toString());
-                            // List<ValidateUser> validateUserList=response.body();
-                            ValidateUser validateUser = response.body().get(0);
-                            CommonMethods.setPrefsData(mContext, PrefrenceKey.UserName, validateUser.getUserName());
-                            CommonMethods.setPrefsData(mContext, PrefrenceKey.UserId, validateUser.getUserId());
-                            CommonMethods.setPrefsData(mContext, PrefrenceKey.Password, validateUser.getPassword());
-                            Toast.makeText(mContext, validateUser.getUserName().toString(), Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(mContext, DashBoard_Activity.class);
-                            startActivity(intent);
+                if (CommonMethods.isOnline(mContext)) {
+
+
+                    String userId = loginBinding.edtUserId.getText().toString();
+                    String pass = loginBinding.edtPassword.getText().toString();
+                    if (userId.isEmpty()) {
+                        loginBinding.edtUserId.setError("Enter User Id");
+                    } else if (pass.isEmpty()) {
+                        loginBinding.edtPassword.setError("Enter User Id");
+                    }
+                    RetrofitClient.getClient1().login(userId, pass).enqueue(new Callback<List<ValidateUser>>() {
+                        @Override
+                        public void onResponse(Call<List<ValidateUser>> call, Response<List<ValidateUser>> response) {
+                            if (response.code() == 200 && response.body() != null) {
+                                Log.d("Login", response.toString());
+                                // List<ValidateUser> validateUserList=response.body();
+                                ValidateUser validateUser = response.body().get(0);
+                                CommonMethods.setPrefsData(mContext, PrefrenceKey.UserName, validateUser.getUserName());
+                                CommonMethods.setPrefsData(mContext, PrefrenceKey.UserId, validateUser.getUserId());
+                                CommonMethods.setPrefsData(mContext, PrefrenceKey.Password, validateUser.getPassword());
+                                Toast.makeText(mContext, validateUser.getUserName().toString(), Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(mContext, DashBoard_Activity.class);
+                                startActivity(intent);
+
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<ValidateUser>> call, Throwable t) {
 
                         }
-                    }
+                    });
 
-                    @Override
-                    public void onFailure(Call<List<ValidateUser>> call, Throwable t) {
+                } else {
+                    CommonMethods.setSnackBar(loginBinding.rlRoot, getString(R.string.net));
+                }
 
-                    }
-                });
-//                RetrofitClient.getClient().login(userId, pass).enqueue(new Callback<List<ValidateUser>>() {
-//                    @Override
-//                    public void onResponse(Call<List<ValidateUser>> call, Response<List<ValidateUser>> response) {
-//                        if (response.code() == 200 && response.body() != null) {
-//                            Log.d("Login", response.toString());
-//                            // List<ValidateUser> validateUserList=response.body();
-//                            ValidateUser validateUser = response.body().get(0);
-//                            Toast.makeText(mContext, validateUser.getUserName().toString(), Toast.LENGTH_SHORT).show();
-//
-//                            CommonMethods.setPrefsData(mContext, PrefrenceKey.UserName, validateUser.getUserName());
-//                            CommonMethods.setPrefsData(mContext, PrefrenceKey.UserId, validateUser.getUserId());
-//                            CommonMethods.setPrefsData(mContext, PrefrenceKey.Password, validateUser.getPassword());
-//                               Intent intent=new Intent(mContext,DashBoard_Activity.class);
-//                                startActivity(intent);
-//
-//
-//                        } else {
-//                            Toast.makeText(mContext, "Provided combination does not exist in HR", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//
-//
-//                    @Override
-//                    public void onFailure(Call<List<ValidateUser>> call, Throwable t) {
-//                        Toast.makeText(mContext, "Provided combination does not exist in HR", Toast.LENGTH_SHORT).show();
-//
-//
-//                    }
-//                });
+            }
+        });
+        loginBinding.btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, SignUpActivity.class);
+                startActivity(intent);
 
             }
         });

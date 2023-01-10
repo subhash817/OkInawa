@@ -5,6 +5,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/rlRoot"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/lite_gray"
@@ -90,6 +91,19 @@
                 android:background="@drawable/shapelogin"
                 android:padding="10dp"
                 android:text="Log In"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+            <Button
+                android:id="@+id/btn_SignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shapelogin"
+                android:padding="10dp"
+                android:text="SIGN UP"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
         </LinearLayout>

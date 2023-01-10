@@ -5,6 +5,7 @@ import com.cbs.okinawa.model.ItemCode;
 import com.cbs.okinawa.model.OkinaProdu;
 import com.cbs.okinawa.model.OkinaProduDC;
 import com.cbs.okinawa.model.login.ValidateUser;
+import com.cbs.okinawa.model.userregistration.UserRegistration;
 import com.cbs.okinawa.postmodel.ItemNew;
 import com.cbs.okinawa.postmodel.OkinProdAPINEWPost;
 
@@ -55,6 +56,10 @@ public interface ApiInterface {
     @Headers("Content-Type: application/json")
     @POST("api/OkinawaProductionAPINEW")
     Call<ItemNew> itemNewPost(@Body OkinProdAPINEWPost okinProdAPINEWPost);
+
+    @Headers("Content-Type: application/json")
+    @POST("UserRegistration/UserReg")
+    Call<UserRegistration> postUserRegistration(@Body UserRegistration userRegistration);
 
 
 }

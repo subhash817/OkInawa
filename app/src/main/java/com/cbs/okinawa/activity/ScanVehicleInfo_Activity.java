@@ -1,17 +1,25 @@
 package com.cbs.okinawa.activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.icu.text.Edits;
+import android.content.pm.PackageManager;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseArray;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 
 import com.cbs.okinawa.R;
@@ -21,7 +29,14 @@ import com.cbs.okinawa.postmodel.OkinProdAPINEWPost;
 import com.cbs.okinawa.retrofit.RetrofitClient;
 import com.cbs.okinawa.utils.CommonMethods;
 import com.cbs.okinawa.utils.PrefrenceKey;
+import com.google.android.gms.vision.CameraSource;
+import com.google.android.gms.vision.Detector;
+import com.google.android.gms.vision.barcode.Barcode;
+import com.google.android.gms.vision.barcode.BarcodeDetector;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -33,6 +48,18 @@ public class ScanVehicleInfo_Activity extends AppCompatActivity {
     Context mContext;
     String proOrder, Quantity, DocEntry, DT, ProductionOrderNo, FGITEM, FGQTY, VINNO, BatteryNO, ChargerNO;
     ArrayList<ItemNew> mArray = new ArrayList<>();
+    private Button scanBtn;
+    private TextView formatTxt, contentTxt;
+
+    private SurfaceView surfaceView;
+    private BarcodeDetector barcodeDetector;
+    private CameraSource cameraSource;
+    private static final int REQUEST_CAMERA_PERMISSION = 201;
+    //This class provides methods to play DTMF tones
+    private ToneGenerator toneGen1;
+    private TextView barcodeText;
+    private String barcodeData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +70,13 @@ public class ScanVehicleInfo_Activity extends AppCompatActivity {
         Quantity = CommonMethods.getPrefsData(mContext, PrefrenceKey.Quantity, "");
         DocEntry = CommonMethods.getPrefsData(mContext, PrefrenceKey.Docentry, "");
         FGITEM = CommonMethods.getPrefsData(mContext, PrefrenceKey.ItemCode, "");
+
+        toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC,     100);
+        surfaceView = findViewById(R.id.surface_view);
+        barcodeText = findViewById(R.id.barcodeVinNo);
         getInitView();
+
+
     }
 
     private void getInitView() {
@@ -60,30 +93,22 @@ public class ScanVehicleInfo_Activity extends AppCompatActivity {
         });
         scanVehInfoBinding.tvProdOrder.setText(proOrder);
         scanVehInfoBinding.tvQuantity.setText(Quantity);
-
-        scanVehInfoBinding.imgScanVin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-            }
-
-        });
         scanVehInfoBinding.btnScanitems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String vinNo = scanVehInfoBinding.txtVin.getText().toString();
-                String chargerNo = scanVehInfoBinding.txtCharger.getText().toString();
-                String batteryNo = scanVehInfoBinding.txtBattery.getText().toString();
+                String vinNo = scanVehInfoBinding.barcodeVinNo.getText().toString();
+                String chargerNo = scanVehInfoBinding.barcodeCharger.getText().toString();
+                String batteryNo = scanVehInfoBinding.barcodeBatteryNo.getText().toString();
                 if (vinNo.isEmpty()) {
-                    scanVehInfoBinding.txtVin.setText("Please Scan Vin No");
+                    scanVehInfoBinding.barcodeVinNo.setText("Please Scan Vin No");
 
                 } else if (chargerNo.isEmpty()) {
-                    scanVehInfoBinding.txtVin.setText("Please chargerNo  No");
+                    scanVehInfoBinding.barcodeCharger.setText("Please chargerNo  No");
 
                 } else if (batteryNo.isEmpty()) {
-                    scanVehInfoBinding.txtVin.setText("Please Scan Battery No");
+                    scanVehInfoBinding.barcodeBatteryNo.setText("Please Scan Battery No");
                 }
+
 
             }
 
@@ -97,6 +122,9 @@ public class ScanVehicleInfo_Activity extends AppCompatActivity {
 
 
     }
+
+
+
 
     public void postProductionItem() {
         OkinProdAPINEWPost prodAPINEWPost = new OkinProdAPINEWPost();
@@ -136,18 +164,5 @@ public class ScanVehicleInfo_Activity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode ==0){
-            if (requestCode==RESULT_OK){
-                String contents=data.getStringExtra("Scan_Result");
-            }
-            if (requestCode==RESULT_CANCELED){
 
-            }
-        }
-
-
-    }
 }

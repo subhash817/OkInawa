@@ -10,4 +10,11 @@
     <string name="sales_order_doc_entry">Sales Order Doc Entry</string>
     <string name="customer_ref_no">Customer Ref No</string>
     <string name="clear">CLEAR</string>
+    <string name="on_hand">On Hand</string>
+    <string name="color">Color</string>
+    <string name="key_no">Key No</string>
+    <string name="controller_no">Controller No</string>
+    <string name="vin_no">VIN No</string>
+    <string name="please_wait">Please wait</string>
+    <string name="net">Internet/wi-fi not available</string>
 </resources>

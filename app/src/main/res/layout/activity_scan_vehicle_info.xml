@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
@@ -106,16 +107,15 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txtVin"
+                        android:id="@+id/barcodeVinNo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textSize="25sp" />
+
 
                     <ImageView
-                        android:id="@+id/imgScanVin"
+                        android:id="@+id/imgScanVinNo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -138,13 +138,11 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txtBattery"
+                        android:id="@+id/barcodeBatteryNo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:layout_centerHorizontal="true"
+                        android:textSize="25sp" />
 
 
                     <ImageView
@@ -171,13 +169,11 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txtCharger"
+                        android:id="@+id/barcodeCharger"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textSize="25sp" />
 
                     <ImageView
                         android:id="@+id/imgScanCharger"
@@ -187,11 +183,23 @@
                         android:src="@drawable/ic_qr_code_scanner" />
 
                 </RelativeLayout>
+
+                <SurfaceView
+                    android:id="@+id/surface_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="100dp"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcvScanItem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="10dp" />
 
 
             </LinearLayout>

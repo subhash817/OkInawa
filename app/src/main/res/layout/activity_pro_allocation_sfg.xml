@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -14,7 +13,9 @@
         android:background="@color/lite_gray"
         android:orientation="vertical"
         tools:context=".activity.ProAllocationSFG_Activity">
+
         <include layout="@layout/toolbar" />
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -33,7 +34,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Status"
+                        android:text="@string/status"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -52,8 +53,9 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
                     android:layout_marginTop="5dp">
+
                     <TextView
                         android:id="@+id/tvpr"
                         android:layout_width="wrap_content"
@@ -65,15 +67,13 @@
 
                     <AutoCompleteTextView
                         android:id="@+id/autoTxtViewProOrder"
-                        android:layout_toRightOf="@+id/tvpr"
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
+                        android:layout_alignParentRight="true"
                         android:textAlignment="center"
                         android:textColor="@color/green"
                         android:textSize="14sp"
                         android:textStyle="normal" />
-
 
 
                     <ImageView
@@ -82,7 +82,6 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:src="@drawable/ic_baseline_search_24" />
-
 
 
                 </RelativeLayout>
@@ -105,8 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:textColor="@color/green"
-                        />
+                        android:textColor="@color/green" />
 
                 </RelativeLayout>
 
@@ -116,7 +114,8 @@
                     android:layout_margin="10dp">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:id="@+id/txtD"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="FG Description"
                         android:textColor="@color/black"
@@ -128,6 +127,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
+                        android:layout_marginLeft="60dp"
+                        android:layout_toRightOf="@id/txtD"
+                        android:lines="2"
+                        android:maxLines="2"
                         android:textColor="@color/green" />
 
                 </RelativeLayout>
@@ -167,6 +170,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/txtIssueReference"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true" />
@@ -187,6 +191,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/txtReceiptReference"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true" />
@@ -196,7 +201,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="match_parent"

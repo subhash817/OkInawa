@@ -27,6 +27,7 @@ import com.cbs.okinawa.model.OkinaProdu;
 import com.cbs.okinawa.model.OkinaProduDC;
 import com.cbs.okinawa.retrofit.RetrofitClient;
 import com.cbs.okinawa.utils.CommonMethods;
+import com.cbs.okinawa.utils.CustomProgressbar;
 import com.cbs.okinawa.utils.PrefrenceKey;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ import retrofit2.Response;
 public class ProAllocationFGActivity extends AppCompatActivity implements ItemClickListener {
     ActivityProAllocationFgactivityBinding proAllocFgBinding;
     Context mContext;
-    String preorder, doc, date, docEntry, status, itemCode, description, quantity, issueRef, receiptRef;
+    String preorder, doc, date, docEntry, status, itemCode, description, quantity, issueRef, receiptRef, twoLine;
     ArrayList<String> preOrder = new ArrayList<>();
     ArrayList<String> docEntrys = new ArrayList<>();
     Handler mHandler;
@@ -59,15 +60,6 @@ public class ProAllocationFGActivity extends AppCompatActivity implements ItemCl
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, Status);
         arrayAdapter.setDropDownViewResource(androidx.databinding.library.baseAdapters.R.layout.support_simple_spinner_dropdown_item);
         proAllocFgBinding.spnStatus.setAdapter(arrayAdapter);
-//        preorder = CommonMethods.getPrefsData(mContext, PrefrenceKey.ProOrder, "");
-//        docEntry = CommonMethods.getPrefsData(mContext, PrefrenceKey.Docentry, "");
-//        date = CommonMethods.getPrefsData(mContext, PrefrenceKey.Date, "");
-//        status = CommonMethods.getPrefsData(mContext, PrefrenceKey.Status, "");
-//        itemCode = CommonMethods.getPrefsData(mContext, PrefrenceKey.ItemCode, "");
-//        description = CommonMethods.getPrefsData(mContext, PrefrenceKey.Description, "");
-//        quantity = CommonMethods.getPrefsData(mContext, PrefrenceKey.Quantity, "");
-//        issueRef = CommonMethods.getPrefsData(mContext, PrefrenceKey.IssueRef, "");
-//        receiptRef = CommonMethods.getPrefsData(mContext, PrefrenceKey.ReceiptRef, "");
         autoCompleteTextView = findViewById(R.id.autoTxtViewProOrder);
         getInitView();
 
@@ -75,6 +67,27 @@ public class ProAllocationFGActivity extends AppCompatActivity implements ItemCl
 
 
     private void getInitView() {
+        proAllocFgBinding.buttonClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                proAllocFgBinding.autoTxtViewProOrder.getText().clear();
+                proAllocFgBinding.txtItemCode.setText("");
+                proAllocFgBinding.txtFGDescription.setText("");
+                proAllocFgBinding.txtProductionOrderQTY.setText("");
+                proAllocFgBinding.txtIssueReference.setText("");
+                proAllocFgBinding.txtReceiptReference.setText("");
+
+            }
+        });
+        proAllocFgBinding.buttonExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, DashBoard_Activity.class);
+                startActivity(intent);
+
+            }
+        });
+
         proAllocFgBinding.imgSearchCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,18 +110,12 @@ public class ProAllocationFGActivity extends AppCompatActivity implements ItemCl
         proAllocFgBinding.btnSCANVehicleInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String rem=proAllocFgBinding.edtRemark.getText().toString().trim();
-                if (rem.isEmpty()){
-                    proAllocFgBinding.edtRemark.setError("Please Enter Remarks");
-                }
-                else {
-                    Intent intent = new Intent(mContext, ScanVehicleInfo_Activity.class);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(mContext, ScanVehicleInfo_Activity.class);
+                startActivity(intent);
+
 
             }
         });
-
 
     }
 
@@ -136,25 +143,27 @@ public class ProAllocationFGActivity extends AppCompatActivity implements ItemCl
         status = proAllocFgBinding.spnStatus.getSelectedItem().toString();
         if (status.equalsIgnoreCase("Select Status")) {
             Toast.makeText(mContext, "Please Select Status", Toast.LENGTH_SHORT).show();
+            finish();
             return;
         }
+        CustomProgressbar.showProgressBar(mContext,false);
         RetrofitClient.getClient().getOkinaProdu(status).enqueue(new Callback<List<OkinaProdu>>() {
             @Override
             public void onResponse(Call<List<OkinaProdu>> call, Response<List<OkinaProdu>> response) {
                 if (response.code() == 200 && response.body() != null) {
+                    CustomProgressbar.hideProgressBar();
                     List<OkinaProdu> okinaProdus = response.body();
-                    for (int i=0;i<okinaProdus.size();i++){
+                    for (int i = 0; i < okinaProdus.size(); i++) {
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                         custList.setLayoutManager(linearLayoutManager);
                         okinaProduAdapter = new OkinaProduAdapter(mContext, okinaProdus, ProAllocationFGActivity.this);
                         custList.setAdapter(okinaProduAdapter);
-                        CommonMethods.setPrefsData(mContext,PrefrenceKey.Status,okinaProdus.get(i).getStatus());
-                        CommonMethods.setPrefsData(mContext,PrefrenceKey.ProOrder,okinaProdus.get(i).getProOrder());
-                        CommonMethods.setPrefsData(mContext,PrefrenceKey.Docentry,okinaProdus.get(i).getDocentry());
-                        CommonMethods.setPrefsData(mContext,PrefrenceKey.Date,okinaProdus.get(i).getDate());
+                        CommonMethods.setPrefsData(mContext, PrefrenceKey.Status, okinaProdus.get(i).getStatus());
+                        CommonMethods.setPrefsData(mContext, PrefrenceKey.ProOrder, okinaProdus.get(i).getProOrder());
+                        CommonMethods.setPrefsData(mContext, PrefrenceKey.Docentry, okinaProdus.get(i).getDocentry());
+                        CommonMethods.setPrefsData(mContext, PrefrenceKey.Date, okinaProdus.get(i).getDate());
 
                     }
-
 
 
                 }
@@ -192,15 +201,19 @@ public class ProAllocationFGActivity extends AppCompatActivity implements ItemCl
         this.docEntry = docEntry;
         if (custDialog != null)
             proAllocFgBinding.autoTxtViewProOrder.setText(docEntry);
-
+        CustomProgressbar.showProgressBar(mContext,false);
         RetrofitClient.getClient().getOkinaProduDC(docEntry).enqueue(new Callback<List<OkinaProduDC>>() {
             @Override
             public void onResponse(Call<List<OkinaProduDC>> call, Response<List<OkinaProduDC>> response) {
                 if (response.code() == 200 && response.body() != null) {
+                    CustomProgressbar.hideProgressBar();
                     Log.d("Url", response.toString());
                     List<OkinaProduDC> okinaProduDCS = response.body();
                     if (okinaProduDCS.size() > 0) {
                         for (int i = 0; i < okinaProduDCS.size(); i++) {
+
+                            twoLine = okinaProduDCS.get(i).getDescription();
+
                             proAllocFgBinding.txtItemCode.setText(okinaProduDCS.get(i).getItemCode());
                             proAllocFgBinding.txtFGDescription.setText(okinaProduDCS.get(i).getDescription());
                             proAllocFgBinding.txtProductionOrderQTY.setText(okinaProduDCS.get(i).getQuantity());

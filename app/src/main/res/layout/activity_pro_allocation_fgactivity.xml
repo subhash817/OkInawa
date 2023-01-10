@@ -63,10 +63,9 @@
 
                         <AutoCompleteTextView
                             android:id="@+id/autoTxtViewProOrder"
-                            android:layout_width="match_parent"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_toRightOf="@+id/tvpr"
+                            android:layout_alignParentRight="true"
                             android:textAlignment="center"
                             android:textColor="@color/green"
                             android:textSize="14sp"
@@ -76,9 +75,11 @@
                             android:id="@+id/img_searchCode"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
                             android:layout_alignParentRight="true"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="0dp"
                             android:src="@drawable/ic_baseline_search_24" />
-
 
 
                     </RelativeLayout>
@@ -119,12 +120,17 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/txtD"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
                         android:text="FG Description"
                         android:textColor="@color/black"
                         android:textSize="14sp"
@@ -135,6 +141,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
+                        android:layout_marginLeft="60dp"
+                        android:layout_toRightOf="@id/txtD"
+                        android:lines="2"
+                        android:maxLines="2"
                         android:textColor="@color/green" />
 
                 </RelativeLayout>
@@ -206,7 +216,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="match_parent"

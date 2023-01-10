@@ -1,14 +1,12 @@
 package com.cbs.okinawa.adapter;
 
 import android.content.Context;
-import android.service.controls.actions.CommandAction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,13 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cbs.okinawa.ItemClickListener;
 import com.cbs.okinawa.R;
 import com.cbs.okinawa.model.OkinaProdu;
-import com.cbs.okinawa.utils.CommonMethods;
-import com.cbs.okinawa.utils.PrefrenceKey;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Callback;
 
 public class OkinaProduAdapter extends RecyclerView.Adapter<OkinaProduAdapter.myViewHolder> implements Filterable {
     private List<OkinaProdu> okinaProdus;
@@ -39,7 +33,7 @@ public class OkinaProduAdapter extends RecyclerView.Adapter<OkinaProduAdapter.my
         okinaProduFullList = new ArrayList<>(okinaProdus);
     }
 
-    public void setFilterList(List<OkinaProdu> okinaProduList ) {
+    public void setFilterList(List<OkinaProdu> okinaProduList) {
         this.okinaProdus = okinaProduList;
         notifyDataSetChanged();
     }
@@ -64,11 +58,10 @@ public class OkinaProduAdapter extends RecyclerView.Adapter<OkinaProduAdapter.my
             public void onClick(View view) {
                 holder.tv_Docentry.setText(okinaProdu.getDocentry());
 
-                if (itemClickListener!=null){
+                if (itemClickListener != null) {
                     itemClickListener.onClick(okinaProdu.getDocentry());
 
                 }
-
 
 
             }
@@ -80,8 +73,6 @@ public class OkinaProduAdapter extends RecyclerView.Adapter<OkinaProduAdapter.my
     public int getItemCount() {
         return okinaProdus.size();
     }
-
-
 
 
     public class myViewHolder extends RecyclerView.ViewHolder {
