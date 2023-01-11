@@ -14,6 +14,8 @@ public class PrefrenceKey {
     public static final String UserName = "userName";
     public static final String UserId = "UserId";
     public static final String Password = "password";
+    public static final String emailID = "emailID";
+    public static final String mobileNo = "mobileNo";
 
 
 }

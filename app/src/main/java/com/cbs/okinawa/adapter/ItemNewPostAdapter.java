@@ -34,6 +34,7 @@ public class ItemNewPostAdapter extends RecyclerView.Adapter<ItemNewPostAdapter.
     @Override
     public void onBindViewHolder(@NonNull ItemNewPostAdapter.myViewHolder holder, int position) {
         ItemNew itemNew = itemNewList.get(position);
+        holder.sl.setText("S NO"+(position+1));
         holder.tvDocEntry.setText(itemNew.getDocEntry());
         holder.tvDT.setText(itemNew.getDt());
         holder.tvProOrdNo.setText(itemNew.getProductionOrderNo());
@@ -51,10 +52,11 @@ public class ItemNewPostAdapter extends RecyclerView.Adapter<ItemNewPostAdapter.
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
-        TextView tvDocEntry, tvDT, tvProOrdNo, tvFGITEM, tvFGQTY, tvVinNo, tvBatteryNO, tvChargerNO;
+        TextView tvDocEntry, tvDT, tvProOrdNo, tvFGITEM, tvFGQTY, tvVinNo, tvBatteryNO, tvChargerNO,sl;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
+            sl = itemView.findViewById(R.id.txtSLNO);
             tvDocEntry = itemView.findViewById(R.id.tvDocEntry);
             tvDT = itemView.findViewById(R.id.tvDT);
             tvProOrdNo = itemView.findViewById(R.id.tvProOrdNo);

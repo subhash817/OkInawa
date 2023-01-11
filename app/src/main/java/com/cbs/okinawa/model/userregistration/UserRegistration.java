@@ -38,11 +38,6 @@ public class UserRegistration {
     private String returN_MESSAGE;
 
 
-    public UserRegistration(String userName, String mobileNo, String emailID) {
-        this.userName = userName;
-        this.mobileNo = mobileNo;
-        this.emailID = emailID;
-    }
 
     public String getReturN_CODE() {
         return returN_CODE;
